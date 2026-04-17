@@ -5,7 +5,6 @@
 
 import { reactive, computed, ref } from "vue";
 
-// ВЫНОСИМ состояние за пределы функции, чтобы оно было ОДНО на всё приложение
 const state = reactive({
   backet: [
     {
@@ -105,7 +104,7 @@ export const useBasket = () => {
     }
   };
 
-  // Функция изменения количества (универсальная)
+  // Функция изменения количества
   const changeCount = (id, delta) => {
     const product = state.backet.find(p => p.id === id);
     if (product) {
@@ -117,7 +116,7 @@ export const useBasket = () => {
     }
   };
 
-  // Функция для переключения чекбокса извне (если нужно)
+  // Функция для переключения чекбокса извне
   const toggleSetup = (value) => {
     setupCheckStatus.value = value;
     state.isSetupNeeded = value;

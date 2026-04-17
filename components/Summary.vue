@@ -4,11 +4,10 @@ import { useInfoProduct } from '~/stores/InfoProduct';
 import { useBasket } from '~/composables/basket';
 
 const infoProduct = useInfoProduct();
-const basket = useBasket(); // Получаем доступ к товарам
+const basket = useBasket();
 
 // функция добавление
 let addOrder = async () => {
-  // 1. Получаем доступ к массиву через .value, так как filtBacket это computed
   const itemsArray = basket.filtBacket ? basket.filtBacket.value : [];
 
   // Проверка: есть ли товары
@@ -17,7 +16,7 @@ let addOrder = async () => {
     return;
   }
 
-  // 2. Формируем заказ, используя itemsArray
+  //Формируем заказ, используя
   const orderData = {
     items: itemsArray.map(item => ({
       name: item.name,
@@ -93,7 +92,6 @@ let addOrder = async () => {
 </template>
 
 <style scoped>
-/* Твои стили без изменений */
 .summary-block {
   padding: 3vh;
   background: #f5f5f7;
