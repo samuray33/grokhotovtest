@@ -1,16 +1,18 @@
 <script setup>
 // логику можно было полностью писать в composables/basket.js но я оставил это тут для удобства проверки :)
-// а так я резделил часть что бы показать что и такое я тоже умею 
+// а так я продулировал что бы показать что и так и так можно
 
 import { ref, computed, watch } from 'vue'; 
 import Header from '~/components/Header.vue';
 import Summary from '~/components/Summary.vue';
+import ProductsSlider from '~/components/ProductsSlider.vue'; 
 import { useBasket } from '~/composables/basket';
 import { useInfoProduct } from '~/stores/InfoProduct';
+
 // достаем нашу корзину из composables
 let basket = useBasket();
 
-// достаем наш store (имя переменной: infoStore)
+// достаем наш store
 const infoStore = useInfoProduct(); 
 
 // первоначальная проверка что бы получить только те эелменты у которых count >= 1
@@ -46,7 +48,6 @@ let totalCount = computed(() => {
 // Логика чекбокса
 const isSetupNeeded = ref(false); // Инициализируем false
 
-// Имя computed: setupCheck (как у тебя и было)
 const setupCheck = computed(() => {
   return isSetupNeeded.value ? "Да" : "Нет";
 });
@@ -126,12 +127,16 @@ let clearBasket = () => {
 
       <!-- нужна ли установка -->
       <label v-if="filtBacket && filtBacket.length > 0" class="installation-block">
+
         <input class="installation-block__check" type="checkbox" name="setup" v-model="isSetupNeeded">
+
         <h1 class="installation-block__icon">🔧</h1>
+
         <div class="installation-block__text">
           <h3>Установка</h3>
           <h5>Отметьте, если Вам необходима консультация профессионала по монтажу выбранных товаров.</h5>
         </div>
+
       </label>
     </div>
   
@@ -142,8 +147,8 @@ let clearBasket = () => {
   </section>
 
   <section class="page__section">
-    <!-- тут будет компонент просмотренные товары -->
-     <h1>тут будет компонент просмотренные товары</h1>
+    <!-- тут компонент просмотренные товары -->
+     <ProductsSlider />
   </section>
 </template>
 
@@ -187,11 +192,7 @@ img {
 
 .cart__content {
   width: 140vh;
-}
-
-
-.cart-list {
-  /* Контейнер списка */
+  margin-bottom: 10vh;
 }
 
 .cart-list__item {

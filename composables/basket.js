@@ -47,6 +47,26 @@ const state = reactive({
       price: 12644,
       photo: '/photo/3.png',
       count: 0
+    },
+    {
+      id: 4,
+      name: "Вытяжное устройство TDA",
+      Specifications: "12-72/168 м3/ч / гидрорегулируемый расход / от датчика присутствия",
+      description: "Вытяжное устройство с датчиком присутствия",
+      Art: "G2H1065",
+      price: 12644,
+      photo: '/photo/3.png',
+      count: 0
+    },
+    {
+      id: 5,
+      name: "Вытяжное устройство TDA",
+      Specifications: "12-72/168 м3/ч / гидрорегулируемый расход / от датчика присутствия",
+      description: "Вытяжное устройство с датчиком присутствия",
+      Art: "G2H1065",
+      price: 12644,
+      photo: '/photo/3.png',
+      count: 0
     }
   ],
   // Статус установки храним тут же, чтобы он был глобальным
@@ -112,7 +132,7 @@ export const useBasket = () => {
     totalSum,
     totalCount,
     setupCheckText,
-    setupCheckStatus, // Для v-model
+    setupCheckStatus, 
     
     // Методы
     deleteProduct,
